@@ -9,12 +9,7 @@
   ],
   "routes": [
     {
-      "src": "/static/Main/(.*)",
-      "dest": "/Guest/static/Main/$1"
-    },
-    {
-      "src": "/static/Admin/(.*)",
-      "dest": "/Guest/static/Admin/$1"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
