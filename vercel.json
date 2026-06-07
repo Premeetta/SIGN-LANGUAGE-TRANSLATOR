@@ -9,6 +9,14 @@
   ],
   "routes": [
     {
+      "src": "/static/Main/(.*)",
+      "dest": "/Guest/static/Main/$1"
+    },
+    {
+      "src": "/static/Admin/(.*)",
+      "dest": "/Guest/static/Admin/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "MainProject/wsgi.py"
     }
