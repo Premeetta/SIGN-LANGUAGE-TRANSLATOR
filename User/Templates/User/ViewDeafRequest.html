@@ -1,0 +1,140 @@
+{% extends 'User/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyRequest</title>
+</head>
+<style>
+/* 🌙 Background */
+body {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e2e8f0;
+}
+
+/* 📦 Table */
+table {
+    width: 90%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* 🔝 Header */
+table tr:first-child {
+    background: #1e293b;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+/* 🧱 Cells */
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ✨ Hover */
+tr:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transition: 0.2s;
+}
+
+/* 🎯 Status colors */
+.pending { color: #facc15; font-weight: 600; }
+.accepted { color: #22c55e; font-weight: 600; }
+.rejected { color: #ef4444; font-weight: 600; }
+
+/* 🔘 Buttons */
+a {
+    display: inline-block;
+    margin: 3px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+/* Accept */
+a[href*="accept"] {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+}
+
+/* Reject */
+a[href*="reject"] {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+/* Chat */
+a[href*="chat"] {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+}
+
+/* Hover effect */
+a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+</style>
+<body>
+
+    <table border="1">
+        <tr>
+            <td>SL NO</td>
+            <td>Deaf User</td>
+            <td>Date of Request</td>
+            <td>Request Status</td>
+            <td>Action</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.deafuser_id.deafuser_name}}</td>
+            <td>{{i.request_date}}</td>
+            <td>
+                {% if i.request_status == 0 %}
+                Pending
+                {% elif i.request_status == 1 %}
+                Accepted
+                {% elif i.request_status == 2 %}
+                Rejected
+                {% endif %}
+            </td>
+            <td>
+                {% if i.request_status == 0 %}
+                <a href="{% url 'User:acceptdeafrequest' i.id %}">Accept</a>
+                <a href="{% url 'User:rejectdeafrequest' i.id %}">Reject</a>
+                {% elif i.request_status == 1 %}
+                <a href="{% url 'User:chat' i.deafuser_id.id %}">Chat</a>
+                {% elif i.request_status == 2 %}
+                <a href="{% url 'User:acceptdeafrequest' i.id %}">Accept</a>
+                {% else %}
+                Nil
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% if msg %}
+<script>
+    alert("{{msg}}");
+    window.location="{% url 'User:ViewDeafRequest' %}"
+</script>
+{% endif %}
+{% endblock content %}

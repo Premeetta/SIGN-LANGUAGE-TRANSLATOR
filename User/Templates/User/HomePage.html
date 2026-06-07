@@ -1,0 +1,351 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talk Through SIGN – Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="{% static 'Main/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Main/css/bootstrap-icons.css' %}" rel="stylesheet">
+  <style>
+    :root {
+      --blue:    #6366f1;
+      --sky:     #38bdf8;
+      --dark:    #0f172a;
+      --card:    #1e293b;
+      --muted:   #94a3b8;
+      --border:  #334155;
+      --grad: linear-gradient(90deg, #6366f1, #38bdf8);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: #e2e8f0; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* NAV */
+    .tts-nav { background: rgba(15,23,42,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .tts-brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .tts-brand img { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; }
+    .tts-brand-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: #fff; }
+    .tts-brand-text small { display: block; font-size: .65rem; font-weight: 400; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .875rem; padding: .45rem .85rem; border-radius: 6px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: var(--card); }
+    .nav-links a.active { color: var(--sky); background: rgba(56,189,248,.08); }
+    .nav-right { display: flex; align-items: center; gap: .75rem; }
+    .btn-logout { font-size: .8rem; padding: .45rem 1rem; border-radius: 8px; background: transparent; border: 1px solid var(--border); color: var(--muted); text-decoration: none; transition: all .2s; }
+    .btn-logout:hover { border-color: #ef4444; color: #ef4444; }
+    .avatar-chip { width: 36px; height: 36px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: .9rem; color: #fff; }
+
+    /* PAGE */
+    .page-content { flex: 1; max-width: 1150px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; width: 100%; }
+
+    /* GREETING */
+    .greeting { margin-bottom: 2rem; }
+    .greeting h1 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; }
+    .greeting h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .greeting p { color: var(--muted); margin-top: .4rem; font-size: .95rem; }
+
+    /* STATS */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; transition: border-color .2s; }
+    .stat-card:hover { border-color: var(--sky); }
+    .stat-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .35rem; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .stat-sub { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    /* LAYOUT */
+    .main-layout { display: grid; grid-template-columns: 1fr 330px; gap: 1.25rem; }
+    @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+
+    /* CARD */
+    .g-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .25s; margin-bottom: 1.25rem; }
+    .g-card:last-child { margin-bottom: 0; }
+    .g-card:hover { border-color: rgba(99,102,241,.35); }
+    .g-card-header { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .g-card-title { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: .5rem; }
+    .g-card-title i { color: var(--sky); }
+    .g-card-link { font-size: .78rem; color: var(--sky); text-decoration: none; }
+    .g-card-link:hover { text-decoration: underline; }
+    .g-card-body { padding: 1.25rem 1.5rem; }
+
+    /* CHAT HERO */
+    .chat-hero { background: linear-gradient(130deg, #0f172a 0%, #1e1b4b 100%); border-color: rgba(99,102,241,.3); position: relative; overflow: hidden; }
+    .chat-hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(99,102,241,.15), transparent 70%); pointer-events: none; }
+    .chat-hero-body { padding: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .chat-hero-body h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .chat-hero-body p { color: var(--muted); font-size: .88rem; margin-top: .4rem; max-width: 360px; }
+    .btn-primary-grad { display: inline-flex; align-items: center; gap: .6rem; background: var(--grad); color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: .88rem; padding: .85rem 1.75rem; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: opacity .2s, transform .15s; }
+    .btn-primary-grad:hover { opacity: .88; transform: translateY(-1px); color: #fff; }
+
+    /* CHAT LIST */
+    .chat-item { display: flex; align-items: center; gap: .9rem; padding: .9rem 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .chat-item:last-child { border-bottom: none; }
+    .chat-item:hover .chat-name { color: var(--sky); }
+    .chat-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: .9rem; color: #fff; flex-shrink: 0; }
+    .deaf-badge { font-size: .6rem; background: rgba(16,185,129,.15); color: #10b981; border: 1px solid rgba(16,185,129,.3); border-radius: 4px; padding: 1px 5px; margin-left: .4rem; vertical-align: middle; }
+    .chat-name { font-size: .88rem; font-weight: 600; color: #fff; transition: color .2s; }
+    .chat-preview { font-size: .77rem; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .chat-meta { margin-left: auto; text-align: right; flex-shrink: 0; }
+    .chat-time { font-size: .72rem; color: var(--muted); }
+    .chat-badge { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); color: #fff; font-size: .62rem; font-weight: 700; margin-top: 4px; }
+
+    /* TUTORIALS */
+    .yt-item { display: flex; align-items: center; gap: .9rem; padding: .9rem 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .yt-item:last-child { border-bottom: none; }
+    .yt-item:hover .yt-title { color: var(--sky); }
+    .yt-thumb { width: 72px; height: 48px; border-radius: 8px; background: #0f172a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; position: relative; }
+    .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .yt-thumb .play-icon { position: absolute; font-size: 1.4rem; color: #fff; opacity: .9; }
+    .yt-title { font-size: .85rem; font-weight: 600; color: #fff; transition: color .2s; line-height: 1.3; }
+    .yt-meta { font-size: .74rem; color: var(--muted); margin-top: 3px; }
+    .yt-arrow { margin-left: auto; color: var(--muted); font-size: .85rem; flex-shrink: 0; }
+    .yt-item:hover .yt-arrow { color: var(--sky); }
+
+    /* PRACTICE / ACCURACY */
+    .practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .practice-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1rem; text-decoration: none; transition: all .2s; text-align: center; }
+    .practice-btn:hover { background: rgba(99,102,241,.08); border-color: var(--blue); }
+    .p-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: .2rem; }
+    .practice-btn span { font-size: .8rem; font-weight: 600; color: #e2e8f0; }
+    .practice-btn small { font-size: .7rem; color: var(--muted); }
+    .ic-indigo { background: rgba(99,102,241,.15); color: #818cf8; }
+    .ic-sky    { background: rgba(56,189,248,.15);  color: var(--sky); }
+    .ic-green  { background: rgba(16,185,129,.15);  color: #10b981; }
+    .ic-amber  { background: rgba(251,191,36,.15);   color: #fbbf24; }
+
+    /* PROGRESS */
+    .prog-item { margin-bottom: .9rem; }
+    .prog-item:last-child { margin-bottom: 0; }
+    .prog-label { display: flex; justify-content: space-between; font-size: .79rem; color: #cbd5e1; margin-bottom: .35rem; }
+    .prog-track { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 99px; background: var(--grad); }
+
+    /* QUICK ACTIONS */
+    .actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .action-btn { display: flex; align-items: center; gap: .7rem; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; color: #e2e8f0; text-decoration: none; font-size: .83rem; font-weight: 500; transition: all .2s; }
+    .action-btn:hover { background: rgba(99,102,241,.08); border-color: var(--blue); color: #fff; }
+    .a-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+    /* NOTIF */
+    .notif-item { display: flex; gap: .75rem; padding: .85rem 0; border-bottom: 1px solid var(--border); }
+    .notif-item:last-child { border-bottom: none; }
+    .notif-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .notif-text { font-size: .82rem; color: #cbd5e1; line-height: 1.5; }
+    .notif-time { font-size: .71rem; color: var(--muted); margin-top: 2px; }
+
+    /* STATUS */
+    .status-online { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; color: var(--sky); background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.25); border-radius: 99px; padding: .25rem .75rem; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sky); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* FOOTER */
+    footer { background: var(--card); border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 .5rem; }
+    footer a:hover { color: var(--sky); }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+  <!-- Bootstrap CSS -->
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="tts-nav">
+    <a class="tts-brand" href="#">
+      <img src="{% static 'Main/images/sign.jpg' %}" alt="Logo">
+      <span class="tts-brand-text">
+        SIGN LANGUAGE
+        <small>Translator</small>
+      </span>
+    </a>
+    <ul class="nav-links d-none d-md-flex">
+      <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:HomePage' %}">Home</a>
+                </li>
+
+
+               <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:ViewDeafRequest' %}">
+                       Chat
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:detect_sign_page' %}">
+                       File Upload
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:MyProfile' %}">
+                       Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:Feedback' %}">
+                       Feedback
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'User:Complaint' %}">
+                       Complaint
+                    </a>
+                </li>
+    </ul>
+    <div class="nav-right">
+      <span class="status-online d-none d-sm-inline-flex"><span class="status-dot"></span> Online</span>
+      <a href="{% url 'User:logout' %}" class="btn-logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      <!-- <div class="avatar-chip">{{ data.user_name|first|upper }}</div> -->
+    </div>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- GREETING -->
+    <div class="greeting">
+      <h1>Welcome, <span class="grad">{{ data.user_name }}</span> </h1>
+      <p>Chat with deaf users, practice sign language, and track your learning progress.</p>
+    </div>
+
+    <!-- STATS -->
+   
+
+    <div class="main-layout">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <!-- CHAT WITH DEAF USER -->
+        <div class="g-card chat-hero">
+          <div class="chat-hero-body">
+            <div>
+              <h2>Chat with a Deaf User</h2>
+              <p>Connect with deaf users in real time. They sign via webcam — you read the text and reply instantly.</p>
+            </div>
+            <a href="{% url 'User:ViewDeafRequest' %}" class="btn-primary-grad">
+              <i class="bi bi-chat-dots-fill"></i> Open Chat
+            </a>
+          </div>
+        </div>
+
+        <!-- RECENT CHATS -->
+        
+
+        <!-- YOUTUBE TUTORIALS -->
+        <div class="g-card">
+          <div class="g-card-header">
+            <div class="g-card-title"><i class="bi bi-youtube"></i> Sign Language Tutorials</div>
+            <a href="#" class="g-card-link">See all</a>
+          </div>
+          <div class="g-card-body" style="padding-top:.5rem;padding-bottom:.5rem">
+
+            <a href="https://www.youtube.com/watch?v=MGNgbNGOzh8" target="_blank" class="yt-item">
+              <div class="yt-thumb">
+                <img src="https://img.youtube.com/vi/MGNgbNGOzh8/mqdefault.jpg" alt="">
+                <i class="bi bi-play-circle-fill play-icon"></i>
+              </div>
+              <div>
+                <div class="yt-title">ASL Alphabet – Complete Beginner Guide</div>
+                <div class="yt-meta">12:34 · Beginner</div>
+              </div>
+              <i class="bi bi-arrow-up-right yt-arrow"></i>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=0FcwzMq4iWg" target="_blank" class="yt-item">
+              <div class="yt-thumb">
+                <img src="https://img.youtube.com/vi/0FcwzMq4iWg/mqdefault.jpg" alt="">
+                <i class="bi bi-play-circle-fill play-icon"></i>
+              </div>
+              <div>
+                <div class="yt-title">Top 50 Common Signs in Daily Life</div>
+                <div class="yt-meta">18:22 · Intermediate</div>
+              </div>
+              <i class="bi bi-arrow-up-right yt-arrow"></i>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=v1desDduz5M" target="_blank" class="yt-item">
+              <div class="yt-thumb">
+                <img src="https://img.youtube.com/vi/v1desDduz5M/mqdefault.jpg" alt="">
+                <i class="bi bi-play-circle-fill play-icon"></i>
+              </div>
+              <div>
+                <div class="yt-title">Feelings & Emotions in Sign Language</div>
+                <div class="yt-meta">9:47 · Beginner</div>
+              </div>
+              <i class="bi bi-arrow-up-right yt-arrow"></i>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=KQdB5pVZNv8" target="_blank" class="yt-item">
+              <div class="yt-thumb">
+                <img src="https://img.youtube.com/vi/KQdB5pVZNv8/mqdefault.jpg" alt="">
+                <i class="bi bi-play-circle-fill play-icon"></i>
+              </div>
+              <div>
+                <div class="yt-title">Numbers 1–100 in Sign Language</div>
+                <div class="yt-meta">14:05 · Beginner</div>
+              </div>
+              <i class="bi bi-arrow-up-right yt-arrow"></i>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+
+        <!-- PRACTICE SIGN ACCURACY -->
+        
+
+        <!-- LEARNING PROGRESS -->
+        
+
+        <!-- QUICK ACTIONS -->
+        <div class="g-card">
+          <div class="g-card-header">
+            <div class="g-card-title"><i class="bi bi-grid-1x2-fill"></i> Quick Actions</div>
+          </div>
+          <div class="g-card-body">
+            <div class="actions-grid">
+              <a href="{% url 'User:ViewDeafRequest' %}" class="action-btn"><i class="bi bi-chat-dots-fill a-icon ic-indigo"></i><span>New Chat</span></a>
+              <a href="{% url 'User:MyProfile' %}" class="action-btn"><i class="bi bi-person-fill a-icon ic-sky"></i><span>My Profile</span></a>
+              <a href="{% url 'User:Feedback' %}" class="action-btn"><i class="bi bi-star-fill a-icon ic-amber"></i><span>Feedback</span></a>
+              <a href="{% url 'User:Complaint' %}" class="action-btn"><i class="bi bi-flag-fill a-icon" style="background:rgba(251,113,133,.15);color:#fb7185"></i><span>Complaint</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTIFICATIONS -->
+        
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Talk Through SIGN · BCA Final Year Project &nbsp;·&nbsp;
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+      <a href="{% url 'User:logout' %}">Logout</a>
+    </p>
+  </footer>
+<!-- Bootstrap JS (VERY IMPORTANT for dropdown) -->
+  <script src="{% static 'Main/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

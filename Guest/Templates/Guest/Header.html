@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Talk Through SIGN</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="{% static 'Main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Main/css/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'Main/css/templatemo-tiya-golf-club.css' %}" rel="stylesheet">
+
+    <!-- Small hover enhancement -->
+    <style>
+        .nav-link:hover {
+            color: #F2CC8F !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR START -->
+<nav class="navbar navbar-expand-lg"
+     style="background-color:#0A1F44; padding:12px 0;">
+
+    <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{% static 'Main/images/sign.jpg' %}" width="110" height="60">
+            <span class="navbar-brand-text ms-2" style="color:#F2CC8F; font-weight:700;">
+                <small style="color:#E5E5E5;">SIGN LANGUAGE</small><br>
+                TRANSLATOR
+            </span>
+        </a>
+
+        <!-- MOBILE LOGIN -->
+        <div class="d-lg-none ms-auto me-3">
+            <a class="btn"
+               style="background-color:#F2CC8F; color:#0A1F44; font-weight:bold;"
+               data-bs-toggle="offcanvas"
+               href="#offcanvasExample">
+               Login
+            </a>
+        </div>
+
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- NAV LINKS -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5; font-weight:500;"
+                       href="{% url 'Guest:Index' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5;"
+                       href="#">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5;"
+                       href="#">Events</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5;"
+                       href="{% url 'Guest:DeafUser' %}">
+                       Deaf User
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5;"
+                       href="{% url 'Guest:User' %}">
+                       User
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       style="color:#E5E5E5;"
+                       href="#contact">
+                       Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- DESKTOP LOGIN -->
+            <div class="d-lg-block ms-3">
+                <a class="btn"
+                   href="{% url 'Guest:Login' %}"
+                   style="
+                        background-color:#F2CC8F;
+                        color:#0A1F44;
+                        font-weight:bold;
+                        border-radius:25px;
+                        padding:8px 22px;
+                   ">
+                   <i class="bi bi-shield-lock-fill me-2"></i>Login
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->
+
+    {% block content %}
+{% endblock content %}
+
+
+<!-- FOOTER (UNCHANGED) -->
+
+
+<!-- JS -->
+<script src="{% static 'Main/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

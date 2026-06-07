@@ -1,0 +1,336 @@
+{% extends 'Admin/Header.html' %}
+{% block content %}
+
+<style>
+  :root {
+    --blue:   #6366f1;
+    --sky:    #38bdf8;
+    --dark:   #0f172a;
+    --card:   #1e293b;
+    --muted:  #94a3b8;
+    --border: #334155;
+    --grad:   linear-gradient(90deg, #6366f1, #38bdf8);
+  }
+
+  .ds-wrap {
+    padding: 2rem 1.75rem 4rem;
+  }
+
+  /* Page heading */
+  .ds-page-head {
+    margin-bottom: 1.75rem;
+  }
+  .ds-page-head h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .ds-page-head h1 span {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ds-page-head p { color: var(--muted); font-size: .85rem; margin-top: .4rem; }
+
+  /* Two-col layout */
+  .ds-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .ds-layout { grid-template-columns: 1fr; } }
+
+  /* Card */
+  .ds-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  .ds-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(99,102,241,.08), transparent 70%);
+    pointer-events: none;
+  }
+  .ds-card-header {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: .6rem;
+    font-family: 'Syne', sans-serif;
+    font-size: .88rem; font-weight: 700; color: #fff;
+  }
+  .ds-card-header i { color: var(--sky); }
+  .ds-card-body { padding: 1.5rem; }
+
+  /* Form fields */
+  .ds-field { margin-bottom: 1.25rem; }
+  .ds-label {
+    display: block;
+    font-size: .72rem; font-weight: 700;
+    font-family: 'Syne', sans-serif;
+    color: var(--muted);
+    text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: .5rem;
+  }
+  .ds-input-wrap { position: relative; }
+  .ds-input-wrap i {
+    position: absolute; left: 1rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted); font-size: .95rem; pointer-events: none;
+    transition: color .2s;
+  }
+  .ds-input {
+    width: 100%;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .8rem 1rem .8rem 2.75rem;
+    color: #e2e8f0; font-size: .88rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .ds-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+  }
+  .ds-input-wrap:focus-within i { color: var(--sky); }
+
+  .ds-submit {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    background: var(--grad);
+    border: none; cursor: pointer; color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: .9rem;
+    padding: .85rem 1.5rem; border-radius: 10px;
+    transition: opacity .2s, transform .15s, box-shadow .2s;
+  }
+  .ds-submit:hover { opacity: .88; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,.35); }
+  .ds-submit:active { transform: translateY(0); }
+
+  /* editing state */
+  .editing-banner {
+    display: flex; align-items: center; gap: .6rem;
+    background: rgba(251,191,36,.07);
+    border: 1px solid rgba(251,191,36,.25);
+    border-radius: 10px;
+    padding: .65rem 1rem;
+    font-size: .8rem; color: #fbbf24;
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+  }
+  .editing-banner i { font-size: .85rem; }
+
+  /* Table card */
+  .ds-table { width: 100%; border-collapse: collapse; }
+  .ds-table thead tr {
+    background: rgba(255,255,255,.03);
+    border-bottom: 1px solid var(--border);
+  }
+  .ds-table th {
+    padding: .9rem 1.25rem;
+    font-family: 'Syne', sans-serif;
+    font-size: .68rem; font-weight: 700;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .1em;
+    text-align: left; white-space: nowrap;
+  }
+  .ds-table tbody tr {
+    border-bottom: 1px solid rgba(51,65,85,.5);
+    transition: background .15s;
+  }
+  .ds-table tbody tr:last-child { border-bottom: none; }
+  .ds-table tbody tr:hover { background: rgba(99,102,241,.05); }
+  .ds-table td {
+    padding: .9rem 1.25rem;
+    vertical-align: middle;
+  }
+
+  .td-serial {
+    font-family: 'Syne', sans-serif; font-size: .8rem; font-weight: 800;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    min-width: 36px;
+  }
+  .district-name {
+    font-size: .88rem; font-weight: 600; color: #e2e8f0;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .district-name i { color: var(--border); font-size: .8rem; }
+
+  .action-group { display: flex; align-items: center; gap: .5rem; }
+
+  .btn-edit {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(56,189,248,.08);
+    border: 1px solid rgba(56,189,248,.2);
+    color: #7dd3fc; font-size: .77rem; font-weight: 600;
+    padding: .38rem .85rem; border-radius: 7px;
+    text-decoration: none; transition: all .2s;
+    font-family: 'Syne', sans-serif;
+  }
+  .btn-edit:hover { background: rgba(56,189,248,.18); border-color: var(--sky); color: #fff; }
+
+  .btn-delete {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(239,68,68,.08);
+    border: 1px solid rgba(239,68,68,.2);
+    color: #fca5a5; font-size: .77rem; font-weight: 600;
+    padding: .38rem .85rem; border-radius: 7px;
+    text-decoration: none; transition: all .2s;
+    font-family: 'Syne', sans-serif;
+  }
+  .btn-delete:hover { background: rgba(239,68,68,.18); border-color: #ef4444; color: #fff; }
+
+  /* count chip */
+  .ds-count-chip {
+    display: inline-flex; align-items: center; gap: .45rem;
+    background: rgba(99,102,241,.12);
+    border: 1px solid rgba(99,102,241,.3);
+    border-radius: 99px; padding: .35rem .9rem;
+    font-size: .75rem; font-weight: 600; color: #818cf8;
+    font-family: 'Syne', sans-serif;
+    margin-left: auto;
+  }
+
+  .ds-table-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: .6rem;
+  }
+
+  /* Empty */
+  .ds-empty { padding: 3rem 1.5rem; text-align: center; }
+  .ds-empty i { font-size: 2rem; color: var(--border); display: block; margin-bottom: .75rem; }
+  .ds-empty p { color: var(--muted); font-size: .85rem; }
+</style>
+
+<div class="ds-wrap">
+
+  <div class="ds-page-head">
+    <h1>Manage <span>Districts</span></h1>
+    <p>Add, edit, or remove districts from the system.</p>
+  </div>
+
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <div class="ds-layout">
+
+      <!-- ADD / EDIT FORM -->
+      <div class="ds-card">
+        <div class="ds-card-header">
+          <i class="bi bi-geo-alt-fill"></i>
+          {% if editData %}Edit District{% else %}Add District{% endif %}
+        </div>
+        <div class="ds-card-body">
+
+          {% if editData %}
+          <div class="editing-banner">
+            <i class="bi bi-pencil-square"></i> Editing: {{ editData.district_name }}
+          </div>
+          {% endif %}
+
+          <div class="ds-field">
+            <label class="ds-label" for="dis_txt">District Name</label>
+            <div class="ds-input-wrap">
+              <i class="bi bi-geo-alt"></i>
+              <input
+                class="ds-input"
+                type="text"
+                name="dis_txt"
+                id="dis_txt"
+                value="{{ editData.district_name }}"
+                placeholder="Enter district name…"
+                required
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="ds-submit">
+            {% if editData %}
+            <i class="bi bi-pencil-fill"></i> Update District
+            {% else %}
+            <i class="bi bi-plus-lg"></i> Add District
+            {% endif %}
+          </button>
+
+        </div>
+      </div>
+
+      <!-- DISTRICT TABLE -->
+      <div class="ds-card">
+        <div class="ds-table-header">
+          <div style="font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.5rem;">
+            <i class="bi bi-list-ul" style="color:var(--sky)"></i> All Districts
+          </div>
+          {% if district %}
+          <div class="ds-count-chip">{{ district|length }} total</div>
+          {% endif %}
+        </div>
+
+        {% if district %}
+        <div style="overflow-x:auto">
+          <table class="ds-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>District</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in district %}
+              <tr>
+                <td><span class="td-serial">{{ forloop.counter }}</span></td>
+                <td>
+                  <span class="district-name">
+                    <i class="bi bi-pin-map"></i>{{ i.district_name }}
+                  </span>
+                </td>
+                <td>
+                  <div class="action-group">
+                    <a href="{% url 'Admin:editDistrict' i.id %}" class="btn-edit">
+                      <i class="bi bi-pencil-fill"></i> Edit
+                    </a>
+                    <a href="{% url 'Admin:delDistrict' i.id %}" class="btn-delete">
+                      <i class="bi bi-trash3-fill"></i> Delete
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="ds-empty">
+          <i class="bi bi-geo-alt"></i>
+          <p>No districts added yet.</p>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </form>
+
+</div>
+
+{% if msg %}
+<script>
+  alert("{{ msg }}")
+  window.location = "{% url 'Admin:district' %}"
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'DeafUser/Header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="3">
+
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="txt_mail" id=""></td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="txt_pass" id=""></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="login"></td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location="{% url 'DeafUser:Login' %}"
+</script>
+{% endif %}
+{% endblock %}

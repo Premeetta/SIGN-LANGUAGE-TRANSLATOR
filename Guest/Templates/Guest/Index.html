@@ -1,0 +1,2088 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tiya Golf Club - Free HTML CSS Template</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link href="{%static 'Main/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{%static 'Main/css/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link href="{%static 'Main/css/templatemo-tiya-golf-club.css' %}" rel="stylesheet">
+
+    <!--
+
+TemplateMo 587 Tiya Golf Club
+
+https://templatemo.com/tm-587-tiya-golf-club
+
+-->
+</head>
+
+<body>
+
+    <main>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="{% static 'Main/images/sign.jpg' %}" width="110" height="60">
+                    <span class="navbar-brand-text">
+
+                        <small>SIGN LANGUAGE</small>
+                        TRANSLATOR
+                    </span>
+                </a>
+
+                <div class="d-lg-none ms-auto me-3">
+                    <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                        role="button" aria-controls="offcanvasExample">Member Login</a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Users
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+        <li>
+            <a class="dropdown-item" href="{% url 'Guest:DeafUser' %}">DeafUser</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'Guest:User' %}">User</a>
+        </li>
+    </ul>
+</li>
+                    </ul>
+
+                    <div class="d-lg-block">
+                        <a class="btn custom-btn custom-border-btn" href="{% url 'Guest:Login' %}"
+                            style="background-color: #F2CC8F; color: #3D405B !important; border: none; font-weight: bold;">
+                            <i class="bi bi-shield-lock-fill me-2"></i> Login
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Account Login</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body d-flex flex-column">
+                <form class="custom-form member-login-form" action="#" method="post" role="form">
+
+                    <div class="member-login-form-body">
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="member-login-number">Membership No.</label>
+
+                            <input type="text" name="member-login-number" id="member-login-number" class="form-control"
+                                placeholder="11002560" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="member-login-password">Password</label>
+
+                            <input type="password" name="member-login-password" id="member-login-password"
+                                pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                            <button type="submit" class="form-control">Login</button>
+                        </div>
+
+                        <div class="text-center my-4">
+                            <a href="#">Forgotten password?</a>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="mt-auto mb-5">
+                    <p>
+                        <strong class="text-white me-3">Any Questions?</strong>
+
+                        <a href="tel: 010-020-0340" class="contact-link">
+                            010-020-0340
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#3D405B" fill-opacity="1"
+                    d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+
+
+      {% load static %}
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy-950: #050d1f;
+    --navy-900: #0a1628;
+    --navy-800: #0f2040;
+    --cyan:     #00c9b1;
+    --white:    #ffffff;
+    --gray-400: #829ab1;
+    --font:     'Outfit', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    font-family: var(--font);
+    overflow: hidden;
+    padding-top: 80px;
+    background-color: var(--navy-950);
+  }
+
+  /* ── BACKGROUND PHOTO ── */
+  .hero-bg-photo {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 0;
+  }
+  .hero-bg-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    filter: brightness(0.40) saturate(0.75);
+  }
+  .hero-bg-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--navy-950) 0%,
+      rgba(5,13,31,0.90) 20%,
+      rgba(5,13,31,0.50) 55%,
+      rgba(5,13,31,0.10) 100%
+    );
+    z-index: 1;
+  }
+  .hero-bg-photo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--navy-950) 0%, transparent 35%);
+    z-index: 1;
+  }
+
+  /* Dot grid */
+  .hero-dots {
+    position: absolute; inset: 0; z-index: 1;
+    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* Cyan glow */
+  .hero-glow {
+    position: absolute;
+    top: -180px; left: -180px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,201,177,0.10) 0%, transparent 68%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── LAYOUT ── */
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+  }
+
+  /* ── LEFT ── */
+  .hero-left { display: flex; flex-direction: column; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,201,177,0.10);
+    border: 1px solid rgba(0,201,177,0.25);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.65)} }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 22px;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .hero-title .word-through { color: rgba(255,255,255,0.45); font-weight: 300; }
+  .hero-title .word-sign {
+    display: block;
+    color: var(--cyan);
+    font-size: 1.15em;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    border-radius: 2px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s 0.16s ease both;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--gray-400);
+    max-width: 440px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.5s 0.26s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--cyan);
+    color: var(--navy-950);
+    box-shadow: 0 4px 20px rgba(0,201,177,0.28);
+  }
+  .btn-primary:hover {
+    background: #00dfc5;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,201,177,0.42);
+  }
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.15);
+  }
+  .btn-ghost:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    transform: translateY(-2px);
+    background: rgba(0,201,177,0.07);
+  }
+
+  /* ── RIGHT CARDS ── */
+  .hero-right { animation: fadeUp 0.6s 0.12s ease both; }
+  .preview-stack { display: flex; flex-direction: column; gap: 14px; }
+
+  .p-card {
+    background: rgba(10,22,40,0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 20px 22px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .p-card:hover {
+    border-color: rgba(0,201,177,0.3);
+    transform: translateX(4px);
+  }
+
+  .p-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .p-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* Camera */
+  .card-cam .p-card-header { color: #f87171; }
+  .card-cam .p-dot { background: #f87171; animation: pulse 1.6s ease infinite; }
+  .cam-feed {
+    background: rgba(15,32,64,0.8);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+  }
+  .cam-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(248,113,113,0.12);
+    border: 1px solid rgba(248,113,113,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cam-blink {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #f87171;
+    animation: pulse 1s ease infinite;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* AI Translation */
+  .card-ai .p-card-header { color: var(--cyan); }
+  .card-ai .p-dot { background: var(--cyan); animation: pulse 2s 0.4s ease infinite; }
+  .ai-rows { display: flex; flex-direction: column; gap: 9px; }
+  .ai-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(15,32,64,0.8);
+    border-radius: 9px;
+    padding: 10px 14px;
+    font-size: 0.84rem;
+    color: var(--gray-400);
+  }
+  .ai-row strong { color: var(--white); font-weight: 600; }
+  .ai-pill {
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .pill-sign { background: rgba(0,201,177,0.12); color: var(--cyan); }
+  .pill-ai   { background: rgba(99,179,237,0.12); color: #63b3ed; }
+
+  /* Chat */
+  .card-chat .p-card-header { color: #a78bfa; }
+  .card-chat .p-dot { background: #a78bfa; animation: pulse 2.4s 0.8s ease infinite; }
+  .chat-row { display: flex; align-items: flex-start; gap: 11px; }
+  .chat-av {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(167,139,250,0.15);
+    border: 1px solid rgba(167,139,250,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; color: #a78bfa;
+  }
+  .chat-bubble {
+    background: rgba(15,32,64,0.8);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px 14px 14px 14px;
+    padding: 11px 15px;
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.55;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .hero-bg-photo { width: 100%; }
+    .hero-bg-photo img { filter: brightness(0.25) saturate(0.75); }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
+    .hero-title { font-size: 2.5rem; }
+  }
+</style>
+
+
+
+
+<section class="hero-section" id="section_1">
+
+  <!-- ✅ Replace 'images/hero-bg.jpg' with your actual image path in static folder -->
+  <div class="hero-bg-photo">
+    <img src="{% static 'images/hero-bg.jpg' %}" alt="Hands communicating in sign language" />
+  </div>
+
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Real-Time Sign Language AI
+      </div>
+
+      <h1 class="hero-title">
+        SIGN <span class="word-through">LANGUAGE</span>
+        <span class="word-sign">TRANSLATOR</span>
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-subtitle">
+        A real-time AI platform that converts sign language into text,
+        allowing deaf and hearing individuals to communicate effortlessly.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#section_2" class="btn btn-primary">⚡ Explore Platform</a>
+        <a href="{% url 'Guest:Login' %}" class="btn btn-ghost">Login →</a>
+      </div>
+    </div>
+
+    <!-- RIGHT CARDS -->
+    <div class="hero-right">
+      <div class="preview-stack">
+
+        <div class="p-card card-cam">
+          <div class="p-card-header">
+            <span class="p-dot"></span> Live Camera
+          </div>
+          <div class="cam-feed">
+            <div class="cam-icon">📷</div>
+            <span><span class="cam-blink"></span>Gesture Detection Running...</span>
+          </div>
+        </div>
+
+        <div class="p-card card-ai">
+          <div class="p-card-header">
+            <span class="p-dot"></span> AI Translation
+          </div>
+          <div class="ai-rows">
+            <div class="ai-row">
+              <span>Detected Sign: <strong>Hello</strong></span>
+              <span class="ai-pill pill-sign">SIGN</span>
+            </div>
+            <div class="ai-row">
+              <span>Translated: <strong>Hello, how are you?</strong></span>
+              <span class="ai-pill pill-ai">AI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-card card-chat">
+          <div class="p-card-header">
+            <span class="p-dot"></span> Hearing User Reply
+          </div>
+          <div class="chat-row">
+            <div class="chat-av">H</div>
+            <div class="chat-bubble">Hi! I'm good. Nice to meet you.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<style>
+
+/* HERO BACKGROUND */
+
+.hero-section{
+
+position:relative;
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+background-image:url("https://images.unsplash.com/photo-1535223289827-42f1e9919769");
+
+background-size:cover;
+
+background-position:center;
+
+padding:120px 0;
+
+color:white;
+
+}
+
+/* DARK OVERLAY */
+
+.hero-overlay{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(135deg,#020c1bee,#0a192fee);
+
+}
+
+/* CONTENT ABOVE OVERLAY */
+
+.hero-section .container{
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* TITLE */
+
+.hero-title{
+
+font-size:52px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+.hero-title span{
+
+color:#64ffda;
+
+}
+
+/* SUBTEXT */
+
+.hero-subtitle{
+
+font-size:18px;
+
+color:#ccd6f6;
+
+margin-bottom:30px;
+
+max-width:500px;
+
+line-height:1.7;
+
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+
+display:flex;
+
+gap:15px;
+
+}
+
+.hero-btn-main{
+
+background:#64ffda;
+
+color:#020c1b;
+
+padding:12px 30px;
+
+border-radius:30px;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+.hero-btn-outline{
+
+border:2px solid #64ffda;
+
+color:#64ffda;
+
+padding:12px 30px;
+
+border-radius:30px;
+
+text-decoration:none;
+
+}
+
+/* SYSTEM PREVIEW */
+
+.system-preview{
+
+background:#0a192f;
+
+padding:25px;
+
+border-radius:12px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+
+}
+
+/* CAMERA */
+
+.camera-box{
+
+background:#112240;
+
+padding:15px;
+
+border-radius:8px;
+
+margin-bottom:15px;
+
+}
+
+.camera-header{
+
+font-weight:600;
+
+margin-bottom:10px;
+
+color:#64ffda;
+
+}
+
+.camera-body{
+
+background:black;
+
+height:120px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:14px;
+
+color:#aaa;
+
+border-radius:6px;
+
+}
+
+/* TRANSLATION */
+
+.translation-box{
+
+background:#112240;
+
+padding:15px;
+
+border-radius:8px;
+
+margin-bottom:15px;
+
+}
+
+.translation-header{
+
+color:#64ffda;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+}
+
+/* CHAT */
+
+.chat-box{
+
+background:#112240;
+
+padding:15px;
+
+border-radius:8px;
+
+}
+
+.chat-header{
+
+color:#64ffda;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.hero-title{
+
+font-size:36px;
+
+}
+
+.system-preview{
+
+margin-top:40px;
+
+}
+
+}
+
+</style>
+
+        <!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<section class="about-section" id="section_2">
+
+<div class="container">
+
+    <!-- Title -->
+    <div class="about-header text-center">
+        <h2>SIGN LANGUAGE TRANSLATOR</h2>
+        <p class="subtitle">
+            An intelligent communication platform that bridges the gap between
+            deaf and hearing communities using real-time sign language recognition.
+        </p>
+    </div>
+
+
+    <div class="row align-items-center">
+
+        <!-- LEFT CONTENT -->
+        <div class="col-lg-6 about-content">
+
+            <h3>What is SIGN LANGUAGE TRANSLATOR?</h3>
+
+            <p>
+                <strong>SIGN LANGUAGE TRANSLATOR</strong> is an AI-powered system designed to make
+                communication between deaf and hearing individuals simple and accessible.
+                Since sign language is the primary communication method for many deaf users,
+                interacting with people who do not understand sign language can be challenging.
+            </p>
+
+            <p>
+                Our system uses real-time webcam gesture recognition to convert sign language
+                into English text instantly. Hearing users can read the translated message
+                and respond through text, creating a smooth two-way conversation.
+            </p>
+
+            <p>
+                The platform also helps users learn sign language through tutorials and
+                training videos while detecting incorrect gestures and helping improve
+                signing accuracy.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURES GRID -->
+        <div class="col-lg-6">
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <i class="bi-camera-video"></i>
+                    <h5>Real-Time Detection</h5>
+                    <p>Webcam powered AI recognizes gestures and converts them into English instantly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="bi-chat-dots"></i>
+                    <h5>Two Way Chat</h5>
+                    <p>Hearing users can respond via text allowing smooth communication.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="bi-mortarboard"></i>
+                    <h5>Learn Sign Language</h5>
+                    <p>Integrated tutorials and YouTube lessons help users learn sign language easily.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="bi-check-circle"></i>
+                    <h5>Gesture Correction</h5>
+                    <p>The system detects incorrect gestures and helps improve sign accuracy.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<style>
+
+/* SECTION BACKGROUND */
+
+.about-section{
+background: linear-gradient(135deg,#0a192f,#112240,#020c1b);
+padding:100px 0;
+color:white;
+font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* HEADER */
+
+.about-header h2{
+font-size:48px;
+font-weight:700;
+margin-bottom:15px;
+letter-spacing:1px;
+}
+
+.subtitle{
+color:#b6c2d1;
+font-size:18px;
+max-width:700px;
+margin:auto;
+margin-bottom:70px;
+line-height:1.7;
+}
+
+
+/* LEFT TEXT */
+
+.about-content h3{
+font-size:30px;
+margin-bottom:20px;
+color:#64ffda;
+}
+
+.about-content p{
+color:#cbd5e1;
+font-size:16px;
+line-height:1.8;
+margin-bottom:15px;
+}
+
+
+/* FEATURE GRID */
+
+.feature-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+
+/* FEATURE CARD */
+
+.feature-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:12px;
+backdrop-filter:blur(8px);
+transition:0.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+border-color:#64ffda;
+}
+
+
+/* ICON */
+
+.feature-card i{
+font-size:32px;
+color:#64ffda;
+margin-bottom:12px;
+display:block;
+}
+
+.feature-card h5{
+font-weight:600;
+margin-bottom:8px;
+}
+
+.feature-card p{
+font-size:14px;
+color:#cbd5e1;
+}
+
+</style>
+
+
+
+<!-- WHY CHOOSE US SECTION -->
+
+<style>
+.why-section {
+  width: 100%;
+  padding: 110px 24px 120px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #060d1f 0%, #0b1a3e 50%, #071228 100%);
+}
+
+.why-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(56,115,255,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(99,58,255,0.10) 0%, transparent 45%),
+    radial-gradient(circle at 60% 85%, rgba(0,180,255,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.why-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(56,115,255,0.35), transparent 70%);
+  top: -150px; right: -100px;
+  animation: orbFloat 14s ease-in-out infinite alternate;
+}
+.orb-2 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(99,58,255,0.25), transparent 70%);
+  bottom: -100px; left: -80px;
+  animation: orbFloat 18s ease-in-out infinite alternate-reverse;
+}
+.orb-3 {
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(0,210,255,0.2), transparent 70%);
+  top: 40%; left: 40%;
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+@keyframes orbFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(25px, 20px) scale(1.08); }
+}
+
+.why-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.why-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(56,115,255,0.12);
+  border: 1px solid rgba(56,115,255,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7eaaff;
+  margin-bottom: 24px;
+}
+
+.why-header h2 {
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin-bottom: 18px;
+}
+.why-header h2 span {
+  background: linear-gradient(90deg, #4e8eff, #a78bfa, #38d9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.why-subtitle {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.45);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.why-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 36px 26px 32px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.4s cubic-bezier(.22,.68,0,1.2),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease,
+              background 0.4s ease;
+  opacity: 0;
+  animation: riseUp 0.6s cubic-bezier(.22,.68,0,1.2) forwards;
+}
+.why-card:nth-child(1) { animation-delay: 0.05s; }
+.why-card:nth-child(2) { animation-delay: 0.15s; }
+.why-card:nth-child(3) { animation-delay: 0.25s; }
+.why-card:nth-child(4) { animation-delay: 0.35s; }
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.07);
+  border-color: var(--glow-color, rgba(78,142,255,0.4));
+  box-shadow:
+    0 0 0 1px var(--glow-color, rgba(78,142,255,0.2)),
+    0 30px 70px rgba(0,0,0,0.4),
+    0 0 60px var(--glow-shadow, rgba(78,142,255,0.12));
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glow-color, rgba(78,142,255,0.6)), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.why-card:hover::before { opacity: 1; }
+
+.why-card::after {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: var(--glow-color, rgba(78,142,255,0.15));
+  filter: blur(50px);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.why-card:hover::after { opacity: 1; }
+
+.card-1 { --glow-color: rgba(78,142,255,0.45);  --glow-shadow: rgba(78,142,255,0.15);  --icon-grad: linear-gradient(135deg,#4e8eff,#6366f1); }
+.card-2 { --glow-color: rgba(0,210,167,0.45);   --glow-shadow: rgba(0,210,167,0.12);   --icon-grad: linear-gradient(135deg,#00d2a7,#00b4d8); }
+.card-3 { --glow-color: rgba(250,176,5,0.45);   --glow-shadow: rgba(250,176,5,0.12);   --icon-grad: linear-gradient(135deg,#fab005,#f76707); }
+.card-4 { --glow-color: rgba(167,139,250,0.45); --glow-shadow: rgba(167,139,250,0.12); --icon-grad: linear-gradient(135deg,#a78bfa,#ec4899); }
+
+.icon-wrap {
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  background: var(--icon-grad);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s;
+}
+.why-card:hover .icon-wrap {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.why-card h5 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.why-card p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.45);
+  flex: 1;
+}
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--glow-color);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s, transform 0.3s;
+  margin-top: 4px;
+}
+.why-card:hover .card-tag { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .why-section { padding: 80px 16px 90px; }
+}
+</style>
+
+<section class="why-section">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+
+    <div class="why-header">
+      <div class="why-eyebrow"><i class="bi bi-hand-index-thumb"></i> Why SIGN LANGUAGE TRANSLATOR</div>
+      <h2>Built for <span>seamless</span> communication</h2>
+      <p class="why-subtitle">
+        Designed to create a seamless bridge between sign language and spoken
+        communication — fast, accurate, and inclusive for all.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="why-card card-1">
+        <div class="icon-wrap"><i class="bi bi-lightning-charge-fill"></i></div>
+        <h5>Instant Communication</h5>
+        <p>Real-time sign recognition converts gestures into English text instantly, allowing fast and smooth conversations.</p>
+        <span class="card-tag"><i class="bi bi-arrow-right"></i> Real-time AI</span>
+      </div>
+
+      <div class="why-card card-2">
+        <div class="icon-wrap"><i class="bi bi-universal-access"></i></div>
+        <h5>Accessible For Everyone</h5>
+        <p>Makes communication easy between deaf users and people who do not know sign language — zero barriers.</p>
+        <span class="card-tag"><i class="bi bi-arrow-right"></i> Inclusive Design</span>
+      </div>
+
+      <div class="why-card card-3">
+        <div class="icon-wrap"><i class="bi bi-book-half"></i></div>
+        <h5>Learning Platform</h5>
+        <p>Integrated learning section with tutorials and videos to help users learn and practice sign language at their own pace.</p>
+        <span class="card-tag"><i class="bi bi-arrow-right"></i> Guided Lessons</span>
+      </div>
+
+      <div class="why-card card-4">
+        <div class="icon-wrap"><i class="bi bi-shield-check"></i></div>
+        <h5>Smart Gesture Validation</h5>
+        <p>Detects incorrect signs and helps improve gesture accuracy for better, more confident communication.</p>
+        <span class="card-tag"><i class="bi bi-arrow-right"></i> AI Validation</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+
+/* WHY SECTION BACKGROUND */
+
+.why-section{
+background:linear-gradient(160deg,#020c1b,#0a192f,#112240);
+padding:100px 0;
+color:white;
+}
+
+
+/* HEADER */
+
+.why-header h2{
+font-size:42px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.why-subtitle{
+color:#9fb3c8;
+font-size:17px;
+max-width:600px;
+margin:auto;
+margin-bottom:60px;
+}
+
+
+/* CARD */
+
+.why-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:14px;
+text-align:center;
+transition:0.35s;
+backdrop-filter:blur(10px);
+height:100%;
+}
+
+
+/* HOVER EFFECT */
+
+.why-card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+border-color:#64ffda;
+}
+
+
+/* ICON */
+
+.why-card i{
+font-size:36px;
+color:#64ffda;
+margin-bottom:15px;
+display:block;
+}
+
+
+/* TITLE */
+
+.why-card h5{
+font-weight:600;
+margin-bottom:10px;
+}
+
+
+/* TEXT */
+
+.why-card p{
+font-size:14px;
+color:#cbd5e1;
+line-height:1.6;
+}
+
+</style>
+
+
+<!-- In <head> — add if not already there -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  .testimonial-section {
+    position: relative;
+    padding: 100px 0 110px;
+    background: #030b18;
+    font-family: 'Figtree', sans-serif;
+    overflow: hidden;
+  }
+  .testimonial-section::before,
+  .testimonial-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .testimonial-section::before {
+    width: 500px; height: 500px;
+    background: rgba(16,185,129,0.07);
+    top: -100px; left: -150px;
+  }
+  .testimonial-section::after {
+    width: 420px; height: 420px;
+    background: rgba(99,102,241,0.06);
+    bottom: -80px; right: -100px;
+  }
+  .t-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black, transparent);
+    z-index: 0;
+  }
+  .t-inner { position: relative; z-index: 1; }
+  .t-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #10b981;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.2);
+    border-radius: 50px;
+    padding: 5px 16px;
+    margin-bottom: 18px;
+  }
+  .t-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+  .t-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+ .t-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, #10b981, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;             /* add this */
+  -webkit-text-fill-color: transparent;
+  color: transparent;                /* add this as fallback */
+}
+  
+  .t-subtitle {
+    font-size: 0.95rem;
+    color: #475569;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .t-card {
+    position: relative;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 32px 28px 26px;
+    height: 100%;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .t-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.5), rgba(56,189,248,0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .t-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(16,185,129,0.2);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(16,185,129,0.08);
+  }
+  .t-card:hover::before { opacity: 1; }
+  .t-quote-icon {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(16,185,129,0.07);
+    font-family: Georgia, serif;
+    pointer-events: none;
+    user-select: none;
+  }
+  .t-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+  .t-stars i { color: #f59e0b; font-size: 0.85rem; }
+  .t-text { font-size: 0.92rem; color: #94a3b8; line-height: 1.75; margin-bottom: 26px; }
+  .t-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    margin-bottom: 20px;
+    border: none;
+  }
+  .t-user { display: flex; align-items: center; gap: 12px; }
+  .t-user img {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(16,185,129,0.25);
+    box-shadow: 0 0 14px rgba(16,185,129,0.12);
+  }
+  .t-user-name { font-size: 0.9rem; font-weight: 600; color: #e2e8f0; margin-bottom: 2px; }
+  .t-user-role { font-size: 0.72rem; color: #10b981; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+  .t-verified {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.68rem;
+    color: #334155;
+    background: rgba(16,185,129,0.05);
+    border: 1px solid rgba(16,185,129,0.1);
+    border-radius: 50px;
+    padding: 3px 9px;
+  }
+  .t-verified i { color: #10b981; font-size: 0.7rem; }
+  .t-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 64px;
+    padding: 28px 40px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 18px;
+  }
+  .t-stat { text-align: center; }
+  .t-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #10b981, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;              /* add this */
+  -webkit-text-fill-color: transparent;
+  color: transparent;                 /* add this */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+  .t-stat-label { font-size: 0.75rem; color: #475569; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+  .t-stat-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.06); }
+</style>
+
+<section class="testimonial-section">
+  <div class="t-grid-bg"></div>
+  <div class="container t-inner">
+
+    <div class="text-center mb-5">
+      <div class="t-label">Testimonials</div>
+      <h2 class="t-title">Voices That <em>Matter</em></h2>
+      <p class="t-subtitle">Real experiences from people who explored SIGN LANGUAGE TRANSLATOR.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="t-card">
+          <div class="t-quote-icon">"</div>
+          <div class="t-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="t-text">This system makes communication so much easier. The real-time translation helps bridge the gap between deaf and hearing individuals effortlessly.</p>
+          <hr class="t-divider"/>
+          <div class="t-user">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Daniel Carter"/>
+            <div>
+              <div class="t-user-name">Daniel Carter</div>
+              <div class="t-user-role">Student</div>
+            </div>
+            <div class="t-verified"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="t-card">
+          <div class="t-quote-icon">"</div>
+          <div class="t-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="t-text">The learning section helped me understand sign language basics. The tutorial videos are very helpful and incredibly easy to follow along.</p>
+          <hr class="t-divider"/>
+          <div class="t-user">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Kim"/>
+            <div>
+              <div class="t-user-name">Sarah Kim</div>
+              <div class="t-user-role">Teacher</div>
+            </div>
+            <div class="t-verified"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="t-card">
+          <div class="t-quote-icon">"</div>
+          <div class="t-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="t-text">SIGN LANGUAGE TRANSLATOR is a brilliant idea. It not only helps communication but also encourages people to learn and embrace sign language.</p>
+          <hr class="t-divider"/>
+          <div class="t-user">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Michael Torres"/>
+            <div>
+              <div class="t-user-name">Michael Torres</div>
+              <div class="t-user-role">Developer</div>
+            </div>
+            <div class="t-verified"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="t-stats">
+      <div class="t-stat">
+        <div class="t-stat-num">500+</div>
+        <div class="t-stat-label">Active Users</div>
+      </div>
+      <div class="t-stat-sep"></div>
+      <div class="t-stat">
+        <div class="t-stat-num">4.9★</div>
+        <div class="t-stat-label">Average Rating</div>
+      </div>
+      <div class="t-stat-sep"></div>
+      <div class="t-stat">
+        <div class="t-stat-num">98%</div>
+        <div class="t-stat-label">Satisfaction Rate</div>
+      </div>
+      <div class="t-stat-sep"></div>
+      <div class="t-stat">
+        <div class="t-stat-num">50+</div>
+        <div class="t-stat-label">Signs Recognized</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<style>
+
+/* SECTION */
+
+.testimonial-section{
+background:linear-gradient(160deg,#0a192f,#112240,#020c1b);
+padding:100px 0;
+color:white;
+}
+
+
+/* HEADER */
+
+.testimonial-header h2{
+font-size:42px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.testimonial-subtitle{
+color:#9fb3c8;
+margin-bottom:60px;
+}
+
+
+/* CARD */
+
+.testimonial-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:14px;
+padding:30px;
+margin-bottom:30px;
+transition:0.3s;
+backdrop-filter:blur(10px);
+}
+
+
+/* HOVER */
+
+.testimonial-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+border-color:#64ffda;
+}
+
+
+/* STARS */
+
+.testimonial-stars{
+color:#64ffda;
+font-size:18px;
+margin-bottom:15px;
+}
+
+
+/* TEXT */
+
+.testimonial-card p{
+color:#cbd5e1;
+font-size:15px;
+line-height:1.7;
+}
+
+
+/* USER */
+
+.testimonial-user{
+display:flex;
+align-items:center;
+margin-top:20px;
+}
+
+.testimonial-user img{
+width:45px;
+height:45px;
+border-radius:50%;
+margin-right:12px;
+}
+
+.testimonial-user h6{
+margin:0;
+font-weight:600;
+}
+
+.testimonial-user span{
+font-size:13px;
+color:#9fb3c8;
+}
+
+</style>
+
+    
+   <!-- In your <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  .site-footer {
+    position: relative;
+    background: #030b18;
+    font-family: 'Figtree', sans-serif;
+    overflow: hidden;
+  }
+  .footer-topline {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #10b981 30%, #38bdf8 55%, #6366f1 75%, transparent 100%);
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 500px; height: 500px; background: rgba(16,185,129,0.07); top: -180px; left: -120px; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(99,102,241,0.06); bottom: -100px; right: -80px; }
+  .footer-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+  .footer-content {
+    position: relative;
+    z-index: 1;
+    padding: 60px 0 0;
+  }
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  .brand-logo img {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    border: 1px solid rgba(16,185,129,0.4);
+    box-shadow: 0 0 24px rgba(16,185,129,0.18);
+  }
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .brand-name em {    /* ← add the dot */
+  font-style: normal;
+  background: linear-gradient(90deg, #10b981, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+  .brand-caption {
+    font-size: 0.72rem;
+    color: #10b981;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .brand-desc {
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 230px;
+    margin-bottom: 24px;
+  }
+  .socials { display: flex; gap: 8px; }
+  .soc-btn {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: #475569;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .soc-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(56,189,248,0.1));
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+  .soc-btn:hover { border-color: rgba(16,185,129,0.35); color: #10b981; transform: translateY(-2px); }
+  .soc-btn:hover::before { opacity: 1; }
+  .col-head {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #f1f5f9;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .col-head::before {
+    content: '';
+    width: 14px; height: 2px;
+    background: linear-gradient(90deg, #10b981, #38bdf8);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .f-nav { list-style: none; padding: 0; margin: 0; }
+  .f-nav li { margin-bottom: 10px; }
+  .f-nav a {
+    font-size: 0.83rem;
+    color: #475569;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .f-nav a i { font-size: 0.6rem; transition: transform 0.2s; }
+  .f-nav a:hover { color: #cbd5e1; }
+  .f-nav a:hover i { transform: translateX(3px); color: #10b981; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .pill { font-size: 0.68rem; padding: 4px 11px; border-radius: 50px; font-weight: 600; letter-spacing: 0.3px; }
+  .pill-green { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #10b981; }
+  .pill-blue  { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); color: #38bdf8; }
+  .pill-purple{ background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #818cf8; }
+  .meta-row { display: flex; flex-direction: column; gap: 10px; }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; color: #1e3a5f; font-weight: 600; }
+  .meta-val   { font-size: 0.82rem; color: #64748b; }
+  .sub-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .sub-box p { font-size: 0.78rem; color: #334155; margin-bottom: 12px; line-height: 1.5; }
+  .sub-row { display: flex; }
+  .sub-row input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 9px 13px;
+    font-size: 0.78rem;
+    color: #e2e8f0;
+    font-family: 'Figtree', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .sub-row input::placeholder { color: #1e3a5f; }
+  .sub-row input:focus { border-color: rgba(16,185,129,0.35); }
+  .sub-row button {
+    background: linear-gradient(135deg, #10b981, #0d9488);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 9px 15px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .sub-row button:hover { opacity: 0.9; box-shadow: 0 4px 16px rgba(16,185,129,0.3); }
+  .email-row { display: flex; align-items: center; gap: 9px; font-size: 0.78rem; color: #334155; }
+  .email-row .icon-wrap {
+    width: 26px; height: 26px;
+    background: rgba(16,185,129,0.07);
+    border: 1px solid rgba(16,185,129,0.15);
+    border-radius: 6px;
+    display: grid; place-items: center;
+    color: #10b981;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+  .email-row a { color: #334155; text-decoration: none; transition: color 0.2s; }
+  .email-row a:hover { color: #10b981; }
+  .f-divider {
+    height: 1px;
+    margin: 48px 0 0;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.12) 25%, rgba(56,189,248,0.1) 50%, rgba(99,102,241,0.08) 75%, transparent);
+    border: none;
+  }
+  .footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 0 26px;
+  }
+  .copy { font-size: 0.74rem; color: #1e3a5f; }
+  .copy strong { color: #334155; font-weight: 500; }
+  .bar-right { display: flex; align-items: center; gap: 16px; }
+  .bar-links { display: flex; gap: 4px; }
+  .bar-links a { font-size: 0.74rem; color: #1e3a5f; text-decoration: none; padding: 3px 8px; border-radius: 5px; transition: all 0.2s; }
+  .bar-links a:hover { color: #475569; background: rgba(255,255,255,0.03); }
+  .made-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    color: #1e3a5f;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50px;
+    padding: 3px 10px;
+  }
+  .made-badge span { color: #10b981; font-weight: 600; }
+</style>
+
+
+<!-- Footer HTML -->
+<footer class="site-footer">
+  <div class="footer-topline"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="footer-grid-bg"></div>
+
+  <div class="container footer-content">
+    <div class="row gy-5">
+
+      <div class="col-lg-4 col-md-6">
+        <a class="brand-logo" href="{% url 'Guest:Index' %}">
+          <img src="{% static 'Main/images/sign.jpg' %}" alt="logo"/>
+          <div>
+            <div class="brand-name"> SIGN LANGUAGE <em>TRANSLATOR</em></div>
+            <div class="brand-caption">AI · Assistive · Inclusive</div>
+          </div>
+        </a>
+        <p class="brand-desc">Bridging communication between the Deaf and hearing community through real-time AI sign language recognition.</p>
+        <div class="socials">
+          <a href="#" class="soc-btn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="soc-btn"><i class="bi bi-github"></i></a>
+          <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="soc-btn"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="col-head">Navigate</div>
+        <ul class="f-nav">
+          <li><a href="#section_1"><i class="bi bi-chevron-right"></i>Home</a></li>
+          <li><a href="#section_2"><i class="bi bi-chevron-right"></i>About</a></li>
+          <li><a href="{% url 'Guest:Login' %}"><i class="bi bi-chevron-right"></i>Login</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i>Features</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="col-head">Project</div>
+        <div class="meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Developer</span>
+            <span class="meta-val">Premeetta Paulson</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Year</span>
+            <span class="meta-val">BCA Finals · 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Stack</span>
+            <div class="pill-row">
+              <span class="pill pill-green">Python</span>
+              <span class="pill pill-blue">Django</span>
+              <span class="pill pill-purple">AI/ML</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="col-head">Stay Updated</div>
+        <div class="sub-box">
+          <p>Get notified about new features and updates.</p>
+          <div class="sub-row">
+            <input type="email" placeholder="your@email.com"/>
+            <button type="button">Subscribe</button>
+          </div>
+        </div>
+        <div class="email-row">
+          <div class="icon-wrap"><i class="bi bi-envelope-fill"></i></div>
+          <a href="mailto:talkthroughsign@gmail.com">talkthroughsign@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="f-divider"/>
+
+    <div class="footer-bar">
+      <p class="copy mb-0">© 2026 <strong>SIGN LANGUAGE TRANSLATOR</strong>. All rights reserved.</p>
+      <div class="bar-right">
+        <div class="bar-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+        <div class="made-badge">Made with <span>♥</span> for inclusion</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{%static 'Main/js/jquery.min.js ' %}"></script>
+    <script src="{%static 'Main/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{%static 'Main/js/jquery.sticky.js' %}"></script>
+    <script src="{%static 'Main/js/click-scroll.js' %}"></script>
+    <script src="{%static 'Main/js/animated-headline.js' %}"></script>
+    <script src="{%static 'Main/js/modernizr.js' %}"></script>
+    <script src="{%static 'Main/js/custom.js' %}"></script>
+
+</body>
+
+</html>
