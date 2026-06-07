@@ -160,8 +160,6 @@ def sign_message(request, uid):
             print("Error:", e)
             return JsonResponse({"status": "error"}, status=500)
 import base64
-import numpy as np
-import cv2
 import math
 import json
 import time
@@ -169,14 +167,25 @@ import time
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from cvzone.HandTrackingModule import HandDetector
-from cvzone.ClassificationModule import Classifier
-
 from DeafUser.models import *
 from User.models import *
 
-detector = HandDetector(maxHands=1)
-classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
+detector = None
+classifier = None
+
+
+def load_sign_detector():
+    global detector, classifier
+
+    if detector is not None and classifier is not None:
+        return detector, classifier
+
+    from cvzone.HandTrackingModule import HandDetector
+    from cvzone.ClassificationModule import Classifier
+
+    detector = HandDetector(maxHands=1)
+    classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
+    return detector, classifier
 
 offset = 20
 imgSize = 300
@@ -198,6 +207,16 @@ def detect_sign(request, uid):
     global word_buffer, last_time
 
     if request.method == "POST":
+        try:
+            import cv2
+            import numpy as np
+            detector, classifier = load_sign_detector()
+        except ImportError:
+            return JsonResponse({
+                "status": "unavailable",
+                "message": "Sign detection is not available on this deployment."
+            }, status=503)
+
         body = json.loads(request.body)
 
         image_data = body.get("image")

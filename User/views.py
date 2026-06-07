@@ -1,18 +1,10 @@
 from django.shortcuts import render,redirect
 from Guest.models import *
 from User.models import *
-
-import cv2
-import mediapipe as mp
 import copy
 import itertools
-import numpy as np
-import pandas as pd
 import string
-from tensorflow import keras
 from django.shortcuts import render
-
-from textblob import TextBlob
 
 # Create your views here.
 def HomePage(request):
@@ -148,16 +140,25 @@ def get_messages(request, did):
 
     return JsonResponse(data, safe=False)
 
-import numpy as np
-import cv2
 import math
 from django.shortcuts import render
-from cvzone.HandTrackingModule import HandDetector
-from cvzone.ClassificationModule import Classifier
 
-# 🔥 Load once
-detector = HandDetector(maxHands=1)
-classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
+detector = None
+classifier = None
+
+
+def load_sign_detector():
+    global detector, classifier
+
+    if detector is not None and classifier is not None:
+        return detector, classifier
+
+    from cvzone.HandTrackingModule import HandDetector
+    from cvzone.ClassificationModule import Classifier
+
+    detector = HandDetector(maxHands=1)
+    classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
+    return detector, classifier
 
 labels = ["A","B","C","D","E","F","G","H","I","K","L","M","N","O","P",
           "Q","R","S","T","U","V","W","X","Y","SPACE"]
@@ -170,6 +171,15 @@ def detect_sign_page(request):
     result = None
 
     if request.method == "POST":
+        try:
+            import cv2
+            import numpy as np
+            detector, classifier = load_sign_detector()
+        except ImportError:
+            return render(request, "User/detect_sign.html", {
+                "result": "Sign detection is not available on this deployment."
+            })
+
         file = request.FILES.get("image")
 
         if file:
